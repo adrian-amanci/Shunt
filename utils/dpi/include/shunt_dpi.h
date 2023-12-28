@@ -36,29 +36,28 @@
   portno   - socket port
   hostname - initiator name
   channel_num - channel number, for multi-socket setup
-  
+
   Returns:
   socket id
 
   See Also:
   - <shunt_prim_init_target>  <shunt_cs_init_target>
-  
+
   NOTE:
   If portno_in = 0 -- assign a free client-server TCP port.
   <SHUNT_DEFAULT_TCP_PORT> is reserved for the dynamic allocation of the client-server TCP port.
 
-  
+
 */
 unsigned int shunt_dpi_target_init(const unsigned int portno,const char *hostname, const unsigned int channel_num);
 
-
 /*
   Function: shunt_dpi_initiator_init
-  TCP/IP  "one server" - "one target" poit-to-point initiator  initialization
+  TCP/IP  "one server" - "one target" point-to-point initiator  initialization
 
   Parameters:
 
-  portno - socket port 
+  portno - socket port
 
   Returns:
 
@@ -66,7 +65,7 @@ unsigned int shunt_dpi_target_init(const unsigned int portno,const char *hostnam
 
   See Also:
   - <shunt_prim_init_initiator> <shunt_cs_init_initiator>
- 
+
   NOTE:
   If portno_in = 0 -- assign a free client-server TCP port.
   <SHUNT_DEFAULT_TCP_PORT> is reserved for the dynamic allocation of the client-server TCP port.
@@ -93,7 +92,7 @@ void shunt_dpi_close_socket(int fd);
  sets TCP socket unblocked mode
 
  Parameters:
-  flag -  1/0- unblocked(deafult)/blocked
+  flag -  1/0- unblocked(default)/blocked
   fd - socket id
 
  Returns:
@@ -178,11 +177,11 @@ unsigned int shunt_dpi_tcp_connect(const unsigned int parentfd);
 /*
  Function: shunt_dpi_tcp_get_port
  Finds TCP/IP port  with the specified socket id
- 
+
  Parameters:
 
- socket  -- socket id 
-  
+ socket  -- socket id
+
  Returns:
 
  a corresponding TCP/IP port
@@ -190,22 +189,23 @@ unsigned int shunt_dpi_tcp_connect(const unsigned int parentfd);
  Also see <shunt_cs_update_dynamic_port>
 
 */
-INLINE  unsigned int shunt_dpi_tcp_get_port(unsigned int socket);
+unsigned int shunt_dpi_tcp_get_port(unsigned int socket);
+
 
 /*
  Function:  shunt_dpi_tcp_parent_init_initiator_dpa
  is DPI equivalent of the <shunt_cs_tcp_parent_init_initiator_dp>
- 
-Parameters: 
- 
+
+Parameters:
+
  N/A
 
- Returns: 
+ Returns:
 
  socket id -- DPA parent socket id
 
 */
-INLINE   unsigned int shunt_dpi_tcp_parent_init_initiator_dpa(); 
+unsigned int shunt_dpi_tcp_parent_init_initiator_dpa();
 
 
 
@@ -868,12 +868,12 @@ int shunt_dpi_send_string   (int sockid,int size,char* string);
 int shunt_dpi_recv_string   (int sockid,int size,char** string);
 
 /*
-  Function: shunt_dpi_get_cs_header_id 
-  predefined hash functions for obtain the specific hash value.  
+  Function: shunt_dpi_get_cs_header_id
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
-  
+
   Returns:
   long - hash value;
 
@@ -884,7 +884,6 @@ See Also:
 shunt_long_t shunt_dpi_get_cs_header_id();
 
 // Section: Data exchange (cs) TLM
-
 /* Enum: shunt_dpi_tlm_command_e
  --- Code
 typedef enum
@@ -898,16 +897,15 @@ typedef enum
   } shunt_dpi_tlm_command_e;
 ---
 */
-
 typedef enum {SHUNT_TLM_READ_COMMAND,SHUNT_TLM_WRITE_COMMAND,SHUNT_TLM_IGNORE_COMMAND,SHUNT_TLM_END_SIM,SHUNT_TLM_START_SIM} shunt_dpi_tlm_command_e;
 
 /*
   Function: shunt_dpi_tlm_header_id
-  predefined hash functions for obtain the specific hash value.  
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
-  
+
   Returns:
   long - hash value;
 
@@ -919,11 +917,11 @@ shunt_long_t shunt_dpi_tlm_header_id();
 
 /*
   Function: shunt_dpi_tlm_data_id
-  predefined hash functions for obtain the specific hash value.  
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
-  
+
   Returns:
   long - hash value;
 
@@ -935,11 +933,11 @@ shunt_long_t  shunt_dpi_tlm_data_id();
 
 /*
   Function: shunt_dpi_tlm_axi3_ext_id
-  predefined hash functions for obtain the specific hash value.  
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
-  
+
   Returns:
   long - hash value;
 
@@ -951,11 +949,11 @@ shunt_long_t shunt_dpi_tlm_axi3_ext_id();
 
 /*
   Function: shunt_dpi_tlm_signal_id
-  predefined hash functions for obtain the specific hash value.  
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
-  
+
   Returns:
   long - hash value;
 
@@ -1010,7 +1008,7 @@ void shunt_dpi_tlm_recv_gp_transport (int sockid, cs_tlm_generic_payload_header*
 
 /*
   Function: shunt_dpi_tlm_recv_gp_header
-  recieve tlm generic payload  header ( cs_tlm_generic_payload_header only)
+  receive tlm generic payload  header ( cs_tlm_generic_payload_header only)
 
   Parameters:
 
@@ -1036,7 +1034,7 @@ void shunt_dpi_tlm_send_gp_header (int sockid, cs_tlm_generic_payload_header* h)
 
 /*
   Function: shunt_dpi_tlm_recv_axi3_header
-  recieve tlm generic payload  header ( cs_tlm_generic_payload_header only)
+  receive tlm generic payload  header ( cs_tlm_generic_payload_header only)
 
   Parameters:
 
@@ -1062,7 +1060,7 @@ void shunt_dpi_tlm_send_axi3_header (int sockid, cs_tlm_axi3_extension_payload_h
 
 /*
   Function: shunt_dpi_tlm_recv_gp_data
-  recieve tlm generic payload  packet (byte data vector + byte_enable vector )
+  receive tlm generic payload  packet (byte data vector + byte_enable vector )
 
   Parameters:
 
@@ -1279,7 +1277,7 @@ int shunt_dpi_hs_send_logicN (const unsigned int sockfd,cs_header* h_trnx,const 
   Reg  - data
 
   Returns:
-  number of 4 state variable byte size have been recie   : success > 0
+  number of 4 state variable byte size have been received   : success > 0
 
 
   See Also:
@@ -1363,7 +1361,7 @@ int shunt_dpi_recv_longV(int sockid,int size,svOpenArrayHandle Int);
 
 /*
   Function: shunt_dpi_send_pkt_longV
-   map unpacked "longint" paket (cs_header structure + one-dimensional data payload array)
+   map unpacked "longint" packet (cs_header structure + one-dimensional data payload array)
 
   Parameters:
 
