@@ -14,7 +14,7 @@
 
 #include "shunt_primitives.h"
 
-//Title: Utilities: Client-Initiator cs_header
+//Title: Utilites: Client-Initiator cs_header
 
 /*
  * About: Verilog Data Types elements:
@@ -78,7 +78,7 @@
  Parameters:
 
  portno_in --socket port .If portno_in = 0 -- allocating a free client-server TCP port.
-
+ 
  NOTE: <SHUNT_DEFAULT_TCP_PORT> is reserved for the dynamic allocation of the client-server TCP port.
 
  Returns:
@@ -90,15 +90,15 @@ INLINE unsigned int shunt_cs_init_initiator(const unsigned int portno_in);
 
 /*
  Function:  shunt_cs_tcp_parent_init_initiator_dpa
- - TCP/IP initiator (server) initialization
- - TCP Dynamic Port Allocation (dpa)
+ - TCP/IP initiator (server) initialization 
+ - TCP Dynamic Port Allocation (dpa) 
  - ready for Multi-Slave TCP IP
-
- Parameters:
-
+ 
+ Parameters: 
+ 
  N/A
 
- Returns:
+ Returns: 
 
  socket id -- DPA parent socket id
 
@@ -112,55 +112,57 @@ INLINE unsigned int shunt_cs_tcp_parent_init_initiator_dpa();
 /*
  Function: shunt_cs_init_target
  TCP/IP target (client) initialization
-
+ 
  Parameters:
 
  hostname  -- initiator (host) name
  portno_in -- TCP port. If portno_in = 0 -- allocating a free client-server TCP port.
-
+ channel_num -- different channels opened concurrently on the same hostname 
+ 
  NOTE: <SHUNT_DEFAULT_TCP_PORT> is dedicated to dynamic client-server TCP port assignment.
-
+ 
  Returns:
 
  socket id
 
 */
-INLINE unsigned int shunt_cs_init_target(const unsigned int portno_in ,const char *hostname);
+INLINE unsigned int shunt_cs_init_target(const unsigned int portno_in ,const char *hostname, const unsigned int channel_num);
 
 /*
- Function: shunt_cs_tcp_parent_init_target_dpa
- - TCP/IP target (client) initialization
- - TCP Dynamic Port Allocation (dpa)
+ Function: shunt_cs_tcp_parent_init_target_dpa 
+ - TCP/IP target (client) initialization 
+ - TCP Dynamic Port Allocation (dpa) 
  - ready for Multi-Slave TCP IP
-
- Parameters:
-
+ 
+ Parameters: 
+ 
  hostname  -- initiator (host) name
-
- Returns:
- <shunt_dynamic_port> - shunt dynamic port allocation struct
-
+ channel_num -- used when multiple tcp ip sockets are actively used on the same hostname
+ 
+ Returns: 
+ <shunt_dynamic_port> - shunt dynamic port allocation struct 
+ 
 
  NOTE: <SHUNT_DEFAULT_TCP_PORT> is reserved for the dynamic allocation of the client-server TCP port.
 
  see  <shunt_prim_tcp_parent_init_initiator>
 
 */
-INLINE shunt_dynamic_port  shunt_cs_tcp_parent_init_target_dpa(const char *hostname);
+INLINE shunt_dynamic_port  shunt_cs_tcp_parent_init_target_dpa(const char *hostname, unsigned int channel_num);
 
 
 /*
  Function: shunt_cs_update_dynamic_port
  Update the shunt_dynamic_por structure by the TCP socket.
-
+ 
  Parameters:
 
- socket -- parent socket id
-
+ socket -- parent socket id 
+  
  Returns:
 
  shunt_dynamic_port structure see <shunt_dynamic_port>
-
+ 
 
 */
 INLINE  shunt_dynamic_port shunt_cs_update_dynamic_port(unsigned int parentfd_0);
@@ -178,7 +180,7 @@ INLINE  shunt_dynamic_port shunt_cs_update_dynamic_port(unsigned int parentfd_0)
   last_enum           - number of data_type_names[] elements
 
   Returns:
-
+  
   hash index
 
   See Also:
@@ -210,7 +212,7 @@ INLINE int shunt_cs_data_type(shunt_long_t hash,const char* data_type_names[],in
 /*
   Function: shunt_cs_send_header
   send SHUNT header over TCP/IP
-
+  
   Parameters:
 
   sockid - socket id from init Target/Initiator
@@ -259,7 +261,7 @@ INLINE int shunt_cs_send_data_header    (int sockid,int n_payloads,cs_data_heade
 
   Returns:
   number of elements have been received  : success > 0
-
+  
   See Also:
   <cs_data_header_t>
 
@@ -492,7 +494,7 @@ INLINE int shunt_cs_send_byteV   (int sockid,const cs_header* header,const char*
 
   Returns:
   number of elements have been received  : success > 0
-
+ 
  See Also:
  <shunt_cs_send_byteV>
 */
@@ -645,12 +647,12 @@ See Also:
 INLINE void shunt_cs_print_data_header (cs_header* h,cs_data_header* h_data,const char* data_type_names[],int last_enum,char* msg);
 
 /*
-  Function: shunt_cs_get_cs_header_leader
-  predefined hash functions for obtain the specific hash value.
+  Function: shunt_cs_get_cs_header_leader 
+  predefined hash functions for obtain the specific hash value.  
 
   Parameters:
   N/A
-
+  
   Returns:
   shunt_long_t - hash value;
 
@@ -662,11 +664,11 @@ INLINE shunt_long_t shunt_cs_get_cs_header_leader();
 
 /*
   Function: shunt_cs_get_tlm_header_leader
-  predefined hash functions for obtain the specific hash value.
+  predefined hash functions for obtain the specific hash value.  
 
   Parameters:
   N/A
-
+  
   Returns:
   shunt_long_t - hash value;
 
@@ -678,11 +680,11 @@ INLINE shunt_long_t shunt_cs_get_tlm_header_leader();
 
 /*
   Function: shunt_cs_get_tlm_data_leader
-  predefined hash functions for obtain the specific hash value.
+  predefined hash functions for obtain the specific hash value.  
 
   Parameters:
   N/A
-
+  
   Returns:
   shunt_long_t - hash value;
 
@@ -694,11 +696,11 @@ INLINE shunt_long_t  shunt_cs_get_tlm_data_leader();
 
 /*
   Function: shunt_cs_get_tlm_axi3_ext_leader
-  predefined hash functions for obtain the specific hash value.
+  predefined hash functions for obtain the specific hash value.  
 
   Parameters:
   N/A
-
+  
   Returns:
   shunt_long_t - hash value;
 
@@ -710,11 +712,11 @@ INLINE shunt_long_t shunt_cs_get_tlm_axi3_ext_leader();
 
 /*
   Function: shunt_cs_get_tlm_axi3_signal_leader
-  predefined hash functions for obtain the specific hash value.
+  predefined hash functions for obtain the specific hash value.  
 
   Parameters:
   N/A
-
+  
   Returns:
   shunt_long_t - hash value;
 
@@ -742,7 +744,7 @@ INLINE void shunt_cs_tlm_send_gp(int sockid, const cs_tlm_generic_payload_header
 
 /*
   Function: shunt_cs_tlm_recv_gp_header
-  receive tlm generic payload  header ( cs_tlm_generic_payload_header only)
+  recieve tlm generic payload  header ( cs_tlm_generic_payload_header only)
 
   Parameters:
 
@@ -768,7 +770,7 @@ INLINE void shunt_cs_tlm_send_gp_header (int sockid, cs_tlm_generic_payload_head
 
 /*
   Function: shunt_cs_tlm_recv_axi3_header
-  receive tlm generic payload  header ( cs_tlm_generic_payload_header only)
+  recieve tlm generic payload  header ( cs_tlm_generic_payload_header only)
 
   Parameters:
 
@@ -795,7 +797,7 @@ INLINE void shunt_cs_tlm_send_axi3_header (int sockid, cs_tlm_axi3_extension_pay
 
 /*
   Function: shunt_cs_tlm_recv_gp_data
-  receive tlm generic payload  packet (byte data vector + byte_enable vector )
+  recieve tlm generic payload  packet (byte data vector + byte_enable vector )
 
   Parameters:
 
