@@ -283,7 +283,7 @@ typedef struct cs_data_header_t {
    Variable:  cs_tlm_generic_payload_header
 
    *TLM 2.0 Generic Payload structure* (Ref. to TLM 2.0 Generic Payload attributes)
-  
+
    --- Code
    //Big-endian view:
    typedef struct cs_tlm_generic_payload_header_t {
@@ -342,7 +342,7 @@ typedef struct cs_data_header_t {
    }
    ---
 
-   - *tlm_sync*         shunt tlm header nb_trasport atribute:
+   - *tlm_sync*         shunt tlm header nb_trasport attribute:
 
    --- Code
    enum  tlm_sync_enum { TLM_ACCEPTED, TLM_UPDATED, TLM_COMPLETED }
@@ -434,7 +434,7 @@ typedef struct cs_tlm_generic_payload_header_t {
 
    *AxID*  - is identification tag for the transaction address group.
 
-   *AxLEN* - gives the exact number of transfers in a burst. 
+   *AxLEN* - gives the exact number of transfers in a burst.
 
    *AxLOCK*  - provides additional information about the transaction atomic characteristics
 

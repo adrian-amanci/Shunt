@@ -5,7 +5,7 @@
  Copyright (c) 2016-2023 IC Verimeter. All rights reserved.
                Licensed under the MIT License.
                See LICENSE file in the project root for full license information.
- Description : target-initiator Primitives is a minimum set of the data exchage over TCP/IP base methods
+ Description : target-initiator Primitives is a minimum set of the data exchange over TCP/IP base methods
 
                System Verilog target initiator handshake (TCP/IP SystemVerilog SHUNT)
  ============================================================================
@@ -23,8 +23,8 @@ INLINE shunt_long_t shunt_prim_hash(const char *str) {
   shunt_long_t hash = 5381;
   int c;
 
-  while (( c = *str++) )
-      hash = (  (hash << 5) + hash) + c; /* hash * 33 + c */
+  while((c = *str++) )
+      hash =((hash << 5) + hash) + c; /* hash * 33 + c */
   return hash;
 }
 
@@ -33,7 +33,7 @@ INLINE void shunt_prim_error(const char *msg) {
   extern int errno;
   #endif
   if(errno==0) {
-    printf(" ERROR: shunt_cs:: %s\n", msg);
+    printf(" ERROR: shunt_cs:: %s\n",msg);
   }
   else perror(msg);
   exit(1);

@@ -14,7 +14,7 @@
 
 #include "shunt_primitives.h"
 
-//Title: Utilites: Client-Initiator cs_header
+//Title: Utilities: Client-Initiator cs_header
 
 /*
  * About: Verilog Data Types elements:
@@ -120,7 +120,7 @@ INLINE unsigned int shunt_cs_tcp_parent_init_initiator_dpa();
  channel_num -- different channels opened concurrently on the same hostname 
  
  NOTE: <SHUNT_DEFAULT_TCP_PORT> is dedicated to dynamic client-server TCP port assignment.
- 
+
  Returns:
 
  socket id
@@ -648,7 +648,7 @@ INLINE void shunt_cs_print_data_header (cs_header* h,cs_data_header* h_data,cons
 
 /*
   Function: shunt_cs_get_cs_header_leader
-  predefined hash functions for obtain the specific hash value. 
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
@@ -664,7 +664,7 @@ INLINE shunt_long_t shunt_cs_get_cs_header_leader();
 
 /*
   Function: shunt_cs_get_tlm_header_leader
-  predefined hash functions for obtain the specific hash value.  
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
@@ -680,7 +680,7 @@ INLINE shunt_long_t shunt_cs_get_tlm_header_leader();
 
 /*
   Function: shunt_cs_get_tlm_data_leader
-  predefined hash functions for obtain the specific hash value. 
+  predefined hash functions for obtain the specific hash value.
 
   Parameters:
   N/A
