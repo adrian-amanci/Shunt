@@ -20,15 +20,17 @@
 //--------------------
 
 
-unsigned int shunt_dpi_target_init(const unsigned int portno, const char *hostname) {
+unsigned int shunt_dpi_target_init(const unsigned int portno, const char *hostname, const unsigned int channel_num) {
   int Result_ =0;
-  Result_ = shunt_cs_init_target(portno,hostname);
+  printf("shunt_dpi: SHUNT CS INIT TARGET \n ");
+  Result_ = shunt_cs_init_target(portno,hostname, channel_num);
   return Result_;
 }
 
 
 unsigned int shunt_dpi_initiator_init(const unsigned int portno) {
   unsigned int  Result_ =0;
+   printf("shunt_dpi: SHUNT CS INIT INITIATOR \n ");
   Result_ = shunt_cs_init_initiator(portno);
   return Result_;
 }

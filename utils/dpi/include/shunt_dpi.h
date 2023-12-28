@@ -35,6 +35,7 @@
 
   portno   - socket port
   hostname - initiator name
+  channel_num - channel number, for multi-socket setup
 
   Returns:
   socket id
@@ -48,8 +49,7 @@
 
 
 */
-unsigned int shunt_dpi_target_init(const unsigned int portno,const char *hostname);
-
+unsigned int shunt_dpi_target_init(const unsigned int portno,const char *hostname, const unsigned int channel_num);
 
 /*
   Function: shunt_dpi_initiator_init
@@ -884,6 +884,21 @@ See Also:
 shunt_long_t shunt_dpi_get_cs_header_id();
 
 // Section: Data exchange (cs) TLM
+/* Enum: shunt_dpi_tlm_command_e
+ --- Code
+typedef enum
+  {
+    SHUNT_TLM_READ_COMMAND,
+    SHUNT_TLM_WRITE_COMMAND,
+    SHUNT_TLM_IGNORE_COMMAND,
+    //
+    SHUNT_TLM_END_SIM,
+    SHUNT_TLM_START_SIM
+  } shunt_dpi_tlm_command_e;
+---
+*/
+typedef enum {SHUNT_TLM_READ_COMMAND,SHUNT_TLM_WRITE_COMMAND,SHUNT_TLM_IGNORE_COMMAND,SHUNT_TLM_END_SIM,SHUNT_TLM_START_SIM} shunt_dpi_tlm_command_e;
+
 /*
   Function: shunt_dpi_tlm_header_id
   predefined hash functions for obtain the specific hash value.

@@ -117,7 +117,8 @@ INLINE unsigned int shunt_cs_tcp_parent_init_initiator_dpa();
 
  hostname  -- initiator (host) name
  portno_in -- TCP port. If portno_in = 0 -- allocating a free client-server TCP port.
-
+ channel_num -- different channels opened concurrently on the same hostname 
+ 
  NOTE: <SHUNT_DEFAULT_TCP_PORT> is dedicated to dynamic client-server TCP port assignment.
 
  Returns:
@@ -125,7 +126,7 @@ INLINE unsigned int shunt_cs_tcp_parent_init_initiator_dpa();
  socket id
 
 */
-INLINE unsigned int shunt_cs_init_target(const unsigned int portno_in ,const char *hostname);
+INLINE unsigned int shunt_cs_init_target(const unsigned int portno_in ,const char *hostname, const unsigned int channel_num);
 
 /*
  Function: shunt_cs_tcp_parent_init_target_dpa
@@ -136,17 +137,18 @@ INLINE unsigned int shunt_cs_init_target(const unsigned int portno_in ,const cha
  Parameters:
 
  hostname  -- initiator (host) name
-
- Returns:
- <shunt_dynamic_port> - shunt dynamic port allocation struct
-
+ channel_num -- used when multiple tcp ip sockets are actively used on the same hostname
+ 
+ Returns: 
+ <shunt_dynamic_port> - shunt dynamic port allocation struct 
+ 
 
  NOTE: <SHUNT_DEFAULT_TCP_PORT> is reserved for the dynamic allocation of the client-server TCP port.
 
  see  <shunt_prim_tcp_parent_init_initiator>
 
 */
-INLINE shunt_dynamic_port  shunt_cs_tcp_parent_init_target_dpa(const char *hostname);
+INLINE shunt_dynamic_port  shunt_cs_tcp_parent_init_target_dpa(const char *hostname, unsigned int channel_num);
 
 
 /*

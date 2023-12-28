@@ -99,19 +99,17 @@ package shunt_dpi_pkg;
     //Example:
     #define MY_HOST "localhost"
     #define MY_PORT  3450
-
     char* hostname;
     int port;
     port = MY_PORT;
     hostname =   MY_HOST;
-
+    channel_num = 0; 
     shunt_prim_init_tcptarget(port,hostname);
     (end)
-
     Disable function `define:  NO_SHUNT_DPI_TARGET_INIT
     */
 `ifndef NO_SHUNT_DPI_TARGET_INIT
-   import "DPI-C" function int shunt_dpi_target_init (input int portno,input string hostname);
+   import "DPI-C" function int shunt_dpi_target_init (input int portno,input string hostname, input int channel_num);
 `endif
 
    /*
